@@ -1,0 +1,116 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "lirofood-web"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist/browser",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "serviceWorker": true,
+      "styles": [
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/admin-lte/dist/css/AdminLTE.min.css",
+        "../node_modules/admin-lte/dist/css/skins/skin-red.min.css",
+        "../node_modules/admin-lte/plugins/iCheck/flat/red.css",
+        "styles.css"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/admin-lte/dist/js/adminlte.min.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
+      "root": "src",
+      "outDir": "dist/server",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "platform": "server",
+      "index": "index.html",
+      "main": "main.server.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.server.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "class": {
+      "spec": false
+    },
+    "component": {
+      "spec": true,
+      "inlineStyle": true,
+      "inlineTemplate": true
+    },
+    "directive": {
+      "spec": true
+    },
+    "guard": {
+      "spec": false
+    },
+    "module": {
+      "spec": true
+    },
+    "pipe": {
+      "spec": true
+    },
+    "service": {
+      "spec": true
+    }
+  }
+}

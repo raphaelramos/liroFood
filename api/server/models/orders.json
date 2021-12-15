@@ -1,0 +1,53 @@
+{
+  "name": "Orders",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": {}
+  },
+  "properties": {
+    "restaurantId": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "optionalAddress": {
+      "type": "string"
+    },
+    "paymentOption": {
+      "type": "string",
+      "required": true
+    },
+    "orderItems": {
+      "type": "object",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,89 @@
+{
+  "name": "Restaurants",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": {}
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    },
+    "active": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "open": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "cep": {
+      "type": "number"
+    },
+    "phone": {
+      "type": "number"
+    },
+    "rating": {
+      "type": "number"
+    },
+    "imagePath": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "about": {
+      "type": "string"
+    },
+    "hours": {
+      "type": [
+        {
+          "day": "number",
+          "open": "number",
+          "close": "number"
+        }
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

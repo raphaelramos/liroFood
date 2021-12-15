@@ -1,0 +1,37 @@
+{
+  "name": "lirofood-api",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node .",
+    "posttest": "npm run lint && nsp check"
+  },
+  "dependencies": {
+    "compression": "^1.7.1",
+    "cors": "^2.5.2",
+    "helmet": "^3.9.0",
+    "loopback": "^3.17.1",
+    "loopback-boot": "^2.27.0",
+    "loopback-component-explorer": "^5.2.0",
+    "loopback-connector-mongodb": "^3.3.1",
+    "loopback-storage-service": "^1.0.4",
+    "serve-favicon": "^2.4.5",
+    "strong-error-handler": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.17.1",
+    "eslint-config-loopback": "^8.0.0",
+    "nsp": "^2.8.1"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "description": "BackEnd do liroFood",
+  "licence": "Proprietary software",
+  "author": "Raphael Ramos"
+}

@@ -1,0 +1,53 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header" data-background-color="red">
+						<h4 class="title">Login</h4>
+						<p class="category">Por favor, efetue o login para continuar</p>
+					</div>
+
+					<div class="alert alert-warning" *ngIf="sessionExpired()">
+						<div class="container-fluid">
+							<div class="alert-icon">
+								<i class="material-icons">warning</i>
+							</div>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">
+									<i class="material-icons">clear</i>
+								</span>
+							</button>
+							Sua sessão expirou.
+						</div>
+					</div>
+
+					<div class="card-content">
+						<form [formGroup]="loginForm">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="col-md-12">
+										<mat-form-field>
+											<input matInput placeholder="email" formControlName="email" type="email" required>
+											<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-12">
+										<mat-form-field>
+											<input matInput placeholder="senha" formControlName="password" [type]="hide ? 'password' : 'text'" required>
+											<i class="material-icons" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</i>
+											<mat-error *ngIf="password.invalid">Campo Obrigatório</mat-error>
+										</mat-form-field>
+									</div>
+								</div>
+							</div>
+							<button mat-button type="submit" (click)="login()" [disabled]="loginForm.invalid" class="btn btn-danger pull-right">Entrar</button>
+							<div class="clearfix"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,83 @@
+<!-- INÍCIO DO CONTEÚDO -->
+      <section class="content-header">
+        <h1>
+
+        </h1>
+      </section>
+
+
+      <section class="content" [style.background-color]="'rgba(' + colorPage + ')'">
+
+        <div class="row">
+            <div class="col-xs-12">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <i class="fa fa-home"></i>
+
+                  <h3 class="box-title">{{restaurant?.name}}</h3><span class="pull-right"><i class="fa fa-star"></i> {{restaurant?.rating}}</span>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div class="col-sm-3 col-xs-12" *ngIf="restaurant">
+                    <img class="box-img-detail" [src]="restaurant?.imagePath" />
+                  </div>
+
+                  <dl class="col-sm-9 col-xs-12">
+                    <!-- <dt>Categoria</dt> -->
+                    <dd>{{restaurant?.category}}</dd>
+                    <!-- <dt>Quem Somos</dt> -->
+                    <dd>{{restaurant?.about}}</dd>
+
+                    <dt>Horários</dt>
+                    <div *ngIf="!closeRestaurant || !restaurant?.open" class="close-restaurant" role="alert">
+                        Fechado Agora
+                    </div>
+
+                    <div *ngFor="let hours of restaurant?.hours | orderBy: orderHours">
+                      <dd *ngIf="hours?.day == week && day == 'today' && restaurant?.open">
+                        <div *ngIf="hours?.open == 25; else open" class="close-restaurant" role="alert">
+                            Fechado Agora
+                        </div>
+                        <ng-template #open>
+                            {{hours?.day | day}} : {{hours?.open}}h às {{hours?.close}}h
+                        </ng-template>
+                      </dd>
+                      <div *ngIf="day == 'all'">
+                        <dd>{{hours?.day | day}} : 
+                          <span *ngIf="hours?.open == 25; else open">Fechado</span>
+                          <ng-template #open>
+                              {{hours?.open}}h às {{hours?.close}}h
+                          </ng-template>
+                        </dd>
+                      </div>
+                    </div>
+                    <a *ngIf="day == 'today'" (click)="day = 'all'" class="pointer">Outros dias</a>
+
+                    <p *ngIf="!restaurant?.active">
+                      <strong>
+                        Este restaurante não está disponível para pedidos.
+                      </strong>
+                    </p>
+                  </dl>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer detail-footer">
+                  <a class="pull-left" routerLinkActive="detail-active" [routerLink]="['menu']">
+                    Menu
+                  </a>
+                  <a class="pull-right" routerLinkActive="detail-active" [routerLink]="['reviews']">
+                    Avaliações
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- /.col-xs-12 -->
+
+        </div>
+
+        <div class="row">
+            <router-outlet></router-outlet>
+        </div>
+
+      </section>
+      <!-- FIM DO CONTEÚDO -->
